@@ -7,6 +7,7 @@ import com.vld.dobitnik.exception.NotFoundException;
 import com.vld.dobitnik.exception.NullParameterException;
 import com.vld.dobitnik.process.WheelingSystemBuilder;
 import com.vld.dobitnik.utils.CommonConstants;
+import com.vld.dobitnik.utils.PageExtractor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-//import org.springframework.data.mongodb.core.MongoTemplate;
-//import org.springframework.data.mongodb.core.query.Criteria;
-//import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,8 +38,8 @@ public class SystemController implements SystemControllerAPI {
     @Autowired
     private final DrawRepository drawRepository;
 
-//    @Autowired
-//    private MongoTemplate mongoTemplate;
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     @Autowired
     private WheelingSystemBuilder wheelingSystemBuilder;
