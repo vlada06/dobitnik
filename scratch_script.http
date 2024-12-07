@@ -1,0 +1,31 @@
+###
+### POST request to EuWin server
+POST http://127.0.0.1:8083/system
+Authorization: Basic ""
+Content-Type: application/json
+
+{
+     "mainNumbersCombination": [
+         8,
+         20,
+         12,
+         15,
+         16,
+         17,
+         39,
+         41
+     ],
+     "bonusNumbers": [
+         2,
+         6,
+         11
+     ],
+     "mainGamePool": 50,
+     "mainGameSize": 5,
+     "mainSystemSize": 6,
+     "bonusPool": 12,
+     "bonusSize": 3,
+     "bonusSystemSize": 2
+ }
+
+###

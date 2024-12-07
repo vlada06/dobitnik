@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: dobitnik
+server:
+  port: 8088
+  
