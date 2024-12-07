@@ -1,7 +1,6 @@
 ###
 ### POST request to EuWin server
 POST http://127.0.0.1:8088/system
-Authorization: Basic ""
 Content-Type: application/json
 
 {
@@ -15,16 +14,9 @@ Content-Type: application/json
          39,
          41
      ],
-     "bonusNumbers": [
-         2,
-         6,
-         11
-     ],
-     "mainGamePool": 50,
-     "mainGameSize": 5,
-     "mainSystemSize": 6,
-     "bonusPool": 12,
-     "bonusSize": 3,
+     "mainGamePool": 59,
+     "mainGameSize": 6,
+     "mainSystemSize": 3,
      "bonusSystemSize": 2
  }
 
