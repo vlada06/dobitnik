@@ -3,4 +3,4 @@ spring:
     name: dobitnik
 server:
   port: 8088
-  
+
