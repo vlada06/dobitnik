@@ -10,6 +10,9 @@
   - Retain minimum number of integration tests
   - Implement a unit testing framework, preferably Mockito
 - Audit the libraries used, remove the redundant ones
+- figure out what to do with the following line in `build.gradle`:
+  `//	implementation 'org.springframework.boot:spring-boot-starter-security'`
+
 
 
 
