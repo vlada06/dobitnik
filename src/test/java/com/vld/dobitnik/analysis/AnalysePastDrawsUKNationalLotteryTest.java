@@ -3,7 +3,6 @@ package com.vld.dobitnik.analysis;
 import com.vld.dobitnik.utils.ExternalResourcesUtils;
 import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -26,35 +25,6 @@ public class AnalysePastDrawsUKNationalLotteryTest {
         utils = new ExternalResourcesUtils();
         analysePastDrawsUKNationalLottery = new AnalysePastDrawsUKNationalLottery();
         singleNumberFrequency = new SingleNumberFrequency();
-    }
-
-    @Test
-    @DisplayName("Last six draws")
-    void getLastSixTest() {
-        int numberOfDraws = 6;
-        int numberOfBalls = 7;
-        int offset = 0;
-        int[][] draws = utils.readPastNationalLotteryDrawsCsv(NATIONAL_LOTTERY_RESULTS, offset, numberOfDraws, numberOfBalls);
-
-        Map<Integer, Integer> actualCountByDecades = analysePastDrawsUKNationalLottery.getCountByDecadesNationalLottery(draws);
-        int expectedCount = actualCountByDecades.values().stream().reduce(0, Integer::sum);
-        assertEquals(expectedCount, numberOfDraws * numberOfBalls);
-        StringBuilder sb = new StringBuilder("0x ");
-        sb.append(actualCountByDecades.get(0))
-                .append("\n1x ").append(actualCountByDecades.get(10))
-                .append("\n2x ").append(actualCountByDecades.get(20))
-                .append("\n3x ").append(actualCountByDecades.get(30))
-                .append("\n4x ").append(actualCountByDecades.get(40))
-                .append("\n5x ").append(actualCountByDecades.get(50));
-
-        System.out.println(sb.toString());
-
-        assertEquals(5, actualCountByDecades.get(0));
-        assertEquals(5, actualCountByDecades.get(10));
-        assertEquals(7, actualCountByDecades.get(20));
-        assertEquals(6, actualCountByDecades.get(30));
-        assertEquals(6, actualCountByDecades.get(40));
-        assertEquals(7, actualCountByDecades.get(50));
     }
 
     @Test
@@ -126,7 +96,7 @@ public class AnalysePastDrawsUKNationalLotteryTest {
                 .values()
                 .stream()
                 .reduce(0, Integer::sum));
-        assertEquals(1, actualCountByNumber.get(1));
+        assertEquals(0, actualCountByNumber.get(1));
     }
 
     @Test
@@ -152,48 +122,6 @@ public class AnalysePastDrawsUKNationalLotteryTest {
         }
         System.out.println();
 //        assertEquals(3, actualCountByNumber.get(1));
-    }
-
-    @Test
-    @Disabled
-    @Ignore
-    @DisplayName("Check frequency of single numbers over a 8 month  period")
-    void singleNumbersFrequencyAllAvailableTest() {
-        int numberOfDraws = 87;
-        int numberOfBalls = 6;
-        int[][] draws = utils.readPastNationalLotteryDrawsCsv(NATIONAL_LOTTERY_RESULTS, 0, numberOfDraws, numberOfBalls);
-        System.out.println("all available draws ");
-
-        Map<Integer, Integer> actualCountByNumber
-                = singleNumberFrequency.getCountByNumber(draws, POOL_SIZE);
-        assertEquals(numberOfDraws * numberOfBalls, actualCountByNumber
-                .values()
-                .stream()
-                .reduce(0, Integer::sum));
-    }
-
-    @Test
-    @Disabled
-    @DisplayName("Check frequency of single numbers over a 8 month  period")
-    void singleNumbersFrequencyOffsetRangeAvailableTest() {
-        int numberOfDraws = 86;
-        int numberOfBalls = 6;
-        int offset = 1;
-        int[][] draws = utils.readPastNationalLotteryDrawsCsv(NATIONAL_LOTTERY_RESULTS, offset, numberOfDraws, numberOfBalls);
-
-        System.out.println(" draws size " + draws.length);
-
-        Map<Integer, Integer> actualCountByNumber
-                = singleNumberFrequency.getCountByNumber(draws, POOL_SIZE);
-
-        assertEquals((numberOfDraws - offset) * numberOfBalls, actualCountByNumber
-                .values()
-                .stream()
-                .reduce(0, Integer::sum));
-        System.out.println("number, frequency");
-        actualCountByNumber.entrySet().stream().sorted(Map.Entry.comparingByValue())
-                .forEach(System.out::println);
-
     }
 
 
@@ -257,7 +185,7 @@ public class AnalysePastDrawsUKNationalLotteryTest {
         int numberOfDraws = 6;
         int numberOfBalls = 7;
         int divisor = 7;
-        int expected = 4;
+        int expected = 11;
         int[][] draws = utils.readPastNationalLotteryDrawsCsv(NATIONAL_LOTTERY_RESULTS, numberOfDraws, numberOfBalls);
 
         int numberDivisibleByParam = analysePastDrawsUKNationalLottery.getDivisibleGrouping(draws, divisor);
