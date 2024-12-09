@@ -6,11 +6,15 @@ Content-Type: application/json
 {
      "mainNumbersCombination": [
          8,
+         19,
+         1,
+         29,
+         4,
          39,
          41
      ],
      "bonusNumbers": [
-         2,
+         2,ø
          6,
          11
      ],

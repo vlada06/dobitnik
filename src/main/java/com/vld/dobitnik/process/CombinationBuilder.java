@@ -106,7 +106,7 @@ public class CombinationBuilder {
         }
 
         if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug(String.format("wheelingSystem  result size: %s combinations", wheelingSystem.size()));
+            LOGGER.debug(String.format("wheelingSystem result size: %s combinations", wheelingSystem.size()));
         }
         ObjectMapper mapper = new ObjectMapper();
 
@@ -129,10 +129,8 @@ public class CombinationBuilder {
                                                                List<ArrayList<Integer>> shorthandIndicesSubset) {
         List<List<Integer>> shorthandCombinationsSubset = new ArrayList<>();
         StringBuilder sb = new StringBuilder("CombinationBuilder.getShorthandCombinationsSubset:");
-        sb.append("\nmainFullSystemCombination: ")
-                .append(mainFullSystemCombination)
-                .append("\nshorthandIndicesSubset: ")
-                .append(shorthandIndicesSubset);
+        sb.append("\nshorthandIndicesSubset: ")
+            .append(shorthandIndicesSubset);
         if (LOGGER.isInfoEnabled()) {
             LOGGER.info(sb.toString());
         }
@@ -152,7 +150,7 @@ public class CombinationBuilder {
         }
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug(String.format("CombinationBuilder.getShorthandCombinationsSubset - returned: %s",
-                    shorthandCombinationsSubset.toString()));
+                    shorthandCombinationsSubset));
         }
         return shorthandCombinationsSubset;
     }
