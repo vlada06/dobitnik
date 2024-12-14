@@ -5,25 +5,72 @@ Content-Type: application/json
 
 {
      "mainNumbersCombination": [
-         8,
-         19,
-         1,
-         29,
-         4,
-         39,
-         41
+       7,
+       10,
+       11,
+       13,
+       15,
+       16,
+       18,
+       24,
+       45,
+       47,
+       50
      ],
      "bonusNumbers": [
-         2,
-         6,
+         4,
+         8,
          11
      ],
      "mainGamePool": 50,
      "mainGameSize": 3,
-     "mainSystemSize": 6,
+     "mainSystemSize": 8,
      "bonusPool": 12,
      "bonusSize": 3,
      "bonusSystemSize": 2
  }
 
 ###
+
+#fiksni: 9, 26,
+#s 9 ilazili 16, 7, 11, 45
+#s 9 ilazili
+#
+#16=1
+#50=1
+#7=1
+#24=1
+#11=1
+#45=1
+#15=1
+#47=1
+
+#last 247
+#12=5
+#32=5
+#6=4
+#40=4
+
+# last 99
+#6=3
+#12=3
+#7=2
+#11=2
+#49=2
+#50=2
+# s 26 ilazili 16, 7, 11, 45
+#99
+#    13=4
+#37=2
+#14=2
+#18=2
+
+#247
+#46=5
+#13=4
+#16=4
+#24=4
+#27=4
+#28=4
+
+#

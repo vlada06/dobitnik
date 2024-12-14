@@ -14,7 +14,7 @@ public class SingleNumberFrequency {
 
         Map<Integer, Integer> countByNumber = new HashMap<>();
         for (int i = 1; i <= poolSize; i++) {
-            int frequency = Collections.frequency(allBallsDrawn, i);
+//            int frequency = Collections.frequency(allBallsDrawn, i); //  TODO why is this line here?!?
             countByNumber.put(i, Collections.frequency(allBallsDrawn, i));
         }
         return countByNumber;

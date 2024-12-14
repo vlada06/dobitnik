@@ -102,7 +102,7 @@ public class AnalysePastDrawsUKNationalLotteryTest {
     @Test
     @DisplayName("Check frequency of single numbers over a period")
     void singleNumbersFrequencyTestSixDraws() {
-        int numberOfDraws = 6;
+        int numberOfDraws = 15;
         int numberOfBalls = 7;
         int[][] draws = utils.readPastNationalLotteryDrawsCsv(NATIONAL_LOTTERY_RESULTS, numberOfDraws, numberOfBalls);
         System.out.println("Single numbers over the latest " + numberOfDraws + " draws");

@@ -4,20 +4,22 @@ POST http://127.0.0.1:8088/system
 Content-Type: application/json
 
 {
-     "mainNumbersCombination": [
-         8,
-         20,
-         12,
-         15,
-         16,
-         17,
-         39,
-         41
-     ],
-     "mainGamePool": 59,
-     "mainGameSize": 6,
-     "mainSystemSize": 3,
-     "bonusSystemSize": 2
- }
+  "mainNumbersCombination": [
+    5,
+    12,
+    14,
+    24,
+    31,
+    35,
+    41,
+    52,
+    53,
+    56
+  ],
+  "mainGamePool": 59,
+  "mainGameSize": 4,
+  "mainSystemSize": 5,
+  "bonusSystemSize": 2
+}
 
 ###

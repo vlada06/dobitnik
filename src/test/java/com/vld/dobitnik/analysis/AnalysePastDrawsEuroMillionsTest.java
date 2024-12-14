@@ -60,7 +60,7 @@ public class AnalysePastDrawsEuroMillionsTest {
     @Test
     @DisplayName("Check frequency of single numbers over an up to 6 month  period")
     void singleNumbersFrequencyHiLoRangeTest() {
-        int numberOfDraws = 30;
+        int numberOfDraws = 28;
 
         int numberOfBalls = 5;
         int offset = 0;
