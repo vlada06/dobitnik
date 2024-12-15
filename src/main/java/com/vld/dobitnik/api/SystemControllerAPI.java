@@ -53,11 +53,11 @@ public interface SystemControllerAPI {
      * @param requestData JSON containing data to be persisted
      * @return JSON verifying the persisted data
      */
-    @ApiOperation(value = "JsonNode", response = JsonNode.class)
-    @PostMapping(value = "/draws")
-    @ResponseBody
-    @ResponseStatus(HttpStatus.CREATED)
-    Draw addDraw(@RequestBody JsonNode requestData);
+//    @ApiOperation(value = "JsonNode", response = JsonNode.class)
+//    @PostMapping(value = "/draws")
+//    @ResponseBody
+//    @ResponseStatus(HttpStatus.CREATED)
+//    Draw addDraw(@RequestBody JsonNode requestData);
 
     /**
      * Fetch a single draw record from the repository.

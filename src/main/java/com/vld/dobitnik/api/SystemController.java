@@ -1,6 +1,5 @@
 package com.vld.dobitnik.api;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vld.dobitnik.cqrs.Draw;
 import com.vld.dobitnik.cqrs.DrawRepository;
 import com.vld.dobitnik.exception.NotFoundException;
@@ -34,8 +33,6 @@ public class SystemController implements SystemControllerAPI {
     private static final Logger LOGGER = LoggerFactory.getLogger(SystemController.class);
     private static final String EXCEPTION_MESSAGE = "The draw number %s could not be fetched from the database";
 
-
-    @Autowired
     private final DrawRepository drawRepository;
 
     @Autowired
@@ -85,21 +82,21 @@ public class SystemController implements SystemControllerAPI {
 
         return wheelingSystemBuilder.buildRandomWheelingSystem(requestData);
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Draw addDraw(JsonNode addRequest) {
-        if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug(String.format("Adding draw %s", addRequest.toString()));
-        }
-        ObjectMapper mapper = new ObjectMapper();
-        Draw draw = mapper.convertValue(addRequest, Draw.class);
-
-        return drawRepository.save(draw);
-    }
-
+//
+//    /**
+//     * {@inheritDoc}
+//     */
+//    @Override
+//    public Draw addDraw(JsonNode addRequest) {
+//        if (LOGGER.isDebugEnabled()) {
+//            LOGGER.debug(String.format("Adding draw %s", addRequest.toString()));
+//        }
+//        ObjectMapper mapper = new ObjectMapper();
+//        Draw draw = mapper.convertValue(addRequest, Draw.class);
+//
+//        return drawRepository.save(draw);
+//    }
+//
     /**
      * {@inheritDoc}
      */
