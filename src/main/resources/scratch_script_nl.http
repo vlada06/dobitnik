@@ -23,3 +23,24 @@ Content-Type: application/json
 }
 
 ###
+
+POST http://127.0.0.1:8088/draws
+Content-Type: application/json
+
+{
+  "drawNumber": 12,
+  "drawDate": "12/12/2024",
+  "drawnCombination": {
+    "mainNumbers": [
+      8,
+      20,
+      12,
+      39,
+      41
+    ],
+    "bonusNumbers": [
+      2,
+      11
+    ]
+  }
+}

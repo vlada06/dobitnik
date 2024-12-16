@@ -19,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 public class DataController {
 
@@ -45,15 +46,18 @@ public class DataController {
     @PostMapping(value = "/draws")
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public Draw addDraw(JsonNode addRequest) {
+    public Draw addDraw(Draw addRequest) {
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug(String.format("Adding draw %s", addRequest.toString()));
         }
+        String ticketCode = UUID.randomUUID().toString();
+
         ObjectMapper mapper = new ObjectMapper();
         Draw draw = mapper.convertValue(addRequest, Draw.class);
 
         return drawRepository.save(draw);
     }
+
 
     /**
      * Fetch a single draw record from the repository.
