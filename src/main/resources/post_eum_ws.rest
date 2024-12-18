@@ -1,5 +1,5 @@
 ###
-### POST request to EuWin server
+### POST request to EuWin server; Provide broader set of numbers, receive
 POST http://127.0.0.1:8088/system
 Content-Type: application/json
 

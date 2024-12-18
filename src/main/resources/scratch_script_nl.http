@@ -22,25 +22,25 @@ Content-Type: application/json
   "bonusSystemSize": 2
 }
 
-###
 
+### POST
 POST http://127.0.0.1:8088/draws
 Content-Type: application/json
 
 {
-  "drawNumber": 12,
-  "drawDate": "12/12/2024",
-  "drawnCombination": {
+  "drawNumber": "12",
+  "drawNumbers" : {
     "mainNumbers": [
-      8,
-      20,
-      12,
-      39,
-      41
+      1,
+      2,
+      3
     ],
     "bonusNumbers": [
-      2,
-      11
+      1
     ]
   }
 }
+
+###
+
+

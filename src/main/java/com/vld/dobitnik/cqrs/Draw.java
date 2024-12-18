@@ -1,15 +1,22 @@
 package com.vld.dobitnik.cqrs;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.time.LocalDate;
 import java.util.Date; // TODO - better class for dates
 
-public class Draw {
-    public Draw(String drawNumber, Combination drawnCombination, Date drawDate) {
-        this.drawNumber = drawNumber;
-        this.drawnCombination = drawnCombination;
-        this.drawDate = drawDate;
-    }
-
-    private String drawNumber;
-    private Combination drawnCombination;
-    private Date drawDate;
+@Document("draws")
+@Builder
+public record Draw(
+    @Id
+    String drawNumber,
+    @NotNull(message = "Must have at least 5 numbers")
+    Combination drawNumbers
+//    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+//    LocalDate drawDate
+) {
 }
