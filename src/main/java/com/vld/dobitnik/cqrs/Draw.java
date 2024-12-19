@@ -15,8 +15,8 @@ public record Draw(
     @Id
     String drawNumber,
     @NotNull(message = "Must have at least 5 numbers")
-    Combination drawNumbers
-//    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
-//    LocalDate drawDate
+    Combination drawNumbers,
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    String drawDate
 ) {
 }

@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.NoSuchElementException;
+
 @RestController
 @RequestMapping(value = "/draws")
 public class DataController {
@@ -19,7 +21,7 @@ public class DataController {
 
     private static final String EXCEPTION_MESSAGE = "The draw number %s could not be fetched from the database";
 
-//    @Autowired
+    //    @Autowired
     private final DrawRepository drawRepository;
 
     private PageExtractor pageExtractor;
@@ -29,10 +31,10 @@ public class DataController {
     }
 
     /**
-     *
      * Add a past draw to the repository.
+     *
      * @param addRequest JSON containing draw data to be saved
-     * @return  JSON verifying the persisted data
+     * @return JSON verifying the persisted data
      */
     @ApiOperation(value = "JsonNode", response = JsonNode.class)
     @PostMapping
@@ -42,9 +44,10 @@ public class DataController {
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug(String.format("Adding draw %s", addRequest.toString()));
         }
+// TODO Validation(s) to be introduced
         ObjectMapper mapper = new ObjectMapper();
         Draw draw = mapper.convertValue(addRequest, Draw.class);
-    return drawRepository.save(draw);
+        return drawRepository.save(draw);
     }
 
 
@@ -54,52 +57,13 @@ public class DataController {
      * @param drawNumber The number of the draw to be fetched.
      * @return A single draw record.
      */
-//    @GetMapping(value = "/draws/{drawNumber}")
-//    @ResponseStatus(HttpStatus.OK)
-
-////    @Override
-//    public Draw getDraw(@PathVariable String drawNumber) {
-//        if (LOGGER.isDebugEnabled()) {
-//            LOGGER.debug(String.format("Fetching draw %s", drawNumber));
-//        }
-//        Query query = new Query();
-//        query.addCriteria(Criteria.where("drawNumber").is(drawNumber));
-////        Draw draw = mongoTemplate.findOne(query, Draw.class);
-//        Draw draw = null;
-//
-//        if (null != draw) {
-//            return draw;
-//        } else {
-//            throw new NotFoundException(String.format(EXCEPTION_MESSAGE, drawNumber));
-//        }
-//    }
-//
-//    /**
-//     * Fetch draw records from the repository.
-//     *
-//     * @param pageable
-//     * @return A pageful of past draws
-//     */
-//    @GetMapping(value = "/draws/{drawNumber}")
-//    @ResponseStatus(HttpStatus.OK)
-//
-//    public Page<Draw> getDraws(Pageable pageable) {
-//        if (LOGGER.isDebugEnabled()) {
-//            LOGGER.debug("Fetching all draws");
-//        }
-//        List<Draw> draws = drawRepository.findAll();
-//
-//        PageRequest sortedPage = PageRequest.of(
-//            pageable.isUnpaged() ? 0 : pageable.getPageNumber(),
-//            pageable.isUnpaged() ? Integer.MAX_VALUE : pageable.getPageSize(),
-//            Sort.by(Sort.Direction.ASC, "id"));
-//
-//        if (!draws.isEmpty()) {
-//            return pageExtractor.extractPageFromList(draws, sortedPage);
-//        } else {
-//            throw new NotFoundException("No draws fetched");
-//        }
-//    }
-//
+    @GetMapping("/{drawNumber}")
+    @ResponseStatus(HttpStatus.OK)
+    public Draw getDraw(@PathVariable String drawNumber) {
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug(String.format("Fetching draw %s", drawNumber));
+        }
+        return drawRepository.findByDrawNumber(drawNumber).orElseThrow(() -> new NoSuchElementException(EXCEPTION_MESSAGE));
+    }
 
 }

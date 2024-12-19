@@ -82,39 +82,6 @@ public class SystemController implements SystemControllerAPI {
 
         return wheelingSystemBuilder.buildRandomWheelingSystem(requestData);
     }
-//
-//    /**
-//     * {@inheritDoc}
-//     */
-//    @Override
-//    public Draw addDraw(JsonNode addRequest) {
-//        if (LOGGER.isDebugEnabled()) {
-//            LOGGER.debug(String.format("Adding draw %s", addRequest.toString()));
-//        }
-//        ObjectMapper mapper = new ObjectMapper();
-//        Draw draw = mapper.convertValue(addRequest, Draw.class);
-//
-//        return drawRepository.save(draw);
-//    }
-//
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Draw getDraw(@PathVariable String drawNumber) {
-        if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug(String.format("Fetching draw %s", drawNumber));
-        }
-        Query query = new Query();
-        query.addCriteria(Criteria.where("drawNumber").is(drawNumber));
-        Draw draw = mongoTemplate.findOne(query, Draw.class);
-
-        if (null != draw) {
-            return draw;
-        } else {
-            throw new NotFoundException(String.format(EXCEPTION_MESSAGE, drawNumber));
-        }
-    }
 
     /**
      * {@inheritDoc}

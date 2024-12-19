@@ -31,16 +31,25 @@ Content-Type: application/json
   "drawNumber": "12",
   "drawNumbers" : {
     "mainNumbers": [
-      1,
-      2,
-      3
+      13,
+      13,
+      24,
+      32,
+      32,
+      42
     ],
     "bonusNumbers": [
-      1
+      4,
+      11
     ]
-  }
+  },
+  "drawDate" : "10/12/2019"
 }
 
 ###
+
+### GET
+GET http://127.0.0.1:8088/draws/14
+Content-Type: application/json
 
 
