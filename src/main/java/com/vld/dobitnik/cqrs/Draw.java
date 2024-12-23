@@ -6,9 +6,13 @@ import lombok.Builder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
-import java.util.Date; // TODO - better class for dates
-
+/**
+ * A single lottery draw from the past. Data object for storing lottery draws
+ *
+ * @param drawNumber  Draw Number
+ * @param drawNumbers Lottery numbers drawn
+ * @param drawDate Draw Date
+ */
 @Document("draws")
 @Builder
 public record Draw(

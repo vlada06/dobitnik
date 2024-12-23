@@ -46,17 +46,6 @@ public interface SystemControllerAPI {
     @ResponseBody
     JsonNode getRandomWheelingSystem(@RequestBody JsonNode requestData);
 
-
-    /**
-     * Fetch a {@link Page} (page-sized list) of the draw records from the repository.
-     *
-     * @return A {@link Page} (page-sized list) of draw records.
-     */
-    @GetMapping(value = "/draws")
-    @ResponseStatus(HttpStatus.OK)
-    Page<Draw> getDraws(Pageable pageable);
-
-
     /**
      * Obtain a system where the provided numbers will not be contained.
      *

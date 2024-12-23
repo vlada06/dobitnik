@@ -28,19 +28,19 @@ POST http://127.0.0.1:8088/draws
 Content-Type: application/json
 
 {
-  "drawNumber": "12",
+  "drawNumber": "16",
   "drawNumbers" : {
     "mainNumbers": [
-      13,
-      13,
-      24,
-      32,
-      32,
-      42
+      16,
+       6,
+      26,
+      30,
+      36,
+      46
     ],
     "bonusNumbers": [
-      4,
-      11
+      6,
+      10
     ]
   },
   "drawDate" : "10/12/2019"
@@ -51,5 +51,11 @@ Content-Type: application/json
 ### GET
 GET http://127.0.0.1:8088/draws/14
 Content-Type: application/json
+
+
+### GET
+GET http://127.0.0.1:8088/draws
+Content-Type: application/json
+
 
 

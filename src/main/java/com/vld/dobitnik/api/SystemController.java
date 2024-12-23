@@ -83,28 +83,6 @@ public class SystemController implements SystemControllerAPI {
         return wheelingSystemBuilder.buildRandomWheelingSystem(requestData);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Page<Draw> getDraws(Pageable pageable) {
-        if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug("Fetching all draws");
-        }
-        List<Draw> draws = drawRepository.findAll();
-
-        PageRequest sortedPage = PageRequest.of(
-                pageable.isUnpaged() ? 0 : pageable.getPageNumber(),
-                pageable.isUnpaged() ? Integer.MAX_VALUE : pageable.getPageSize(),
-                Sort.by(Sort.Direction.ASC, "id"));
-
-        if (!draws.isEmpty()) {
-            return pageExtractor.extractPageFromList(draws, sortedPage);
-        } else {
-            throw new NotFoundException("No draws fetched");
-        }
-    }
-
 
     /**
      * {@inheritDoc}
