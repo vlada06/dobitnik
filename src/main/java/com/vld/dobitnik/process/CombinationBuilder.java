@@ -289,7 +289,7 @@ public class CombinationBuilder {
         // TODO need to somehow accommodate small number of bonus numbers combinations
         // with larger number of main combinations; Until a better solution, this one rules!!!
         mainNumbers.forEach(c -> {
-            final Combination combination = new Combination(c);
+            final Combination combination = new Combination(c, c); // TODO check usages, refactor
             wheelingSystem.add(combination);
         });
 

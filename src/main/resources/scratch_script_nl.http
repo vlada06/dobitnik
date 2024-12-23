@@ -22,4 +22,40 @@ Content-Type: application/json
   "bonusSystemSize": 2
 }
 
+
+### POST
+POST http://127.0.0.1:8088/draws
+Content-Type: application/json
+
+{
+  "drawNumber": "16",
+  "drawNumbers" : {
+    "mainNumbers": [
+      16,
+       6,
+      26,
+      30,
+      36,
+      46
+    ],
+    "bonusNumbers": [
+      6,
+      10
+    ]
+  },
+  "drawDate" : "10/12/2019"
+}
+
 ###
+
+### GET
+GET http://127.0.0.1:8088/draws/14
+Content-Type: application/json
+
+
+### GET
+GET http://127.0.0.1:8088/draws
+Content-Type: application/json
+
+
+

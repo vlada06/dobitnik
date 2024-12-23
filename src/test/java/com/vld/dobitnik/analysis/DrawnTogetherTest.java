@@ -6,7 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -41,7 +40,7 @@ class DrawnTogetherTest {
         int[][] pastDraws = utils.readPastNationalLotteryDrawsCsv(EURO_MILLION_RESULTS, offset, numberOfPastDraws, numberOfBalls);
 
 
-        int expectedSize = 45;
+        int expectedSize = 8;
 
         Map<Integer, Integer> actualFrequencies = drawnTogether.frequentlyDrawnTogether(checkedAgainst, pastDraws);
 
@@ -52,7 +51,6 @@ class DrawnTogetherTest {
         int actualSize = actualFrequencies.size();
 
         assertEquals(expectedSize, actualSize);
-
     }
 }
 

@@ -1,6 +1,5 @@
 package com.vld.dobitnik.api;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vld.dobitnik.cqrs.Draw;
 import com.vld.dobitnik.cqrs.DrawRepository;
 import com.vld.dobitnik.exception.NotFoundException;
@@ -34,8 +33,6 @@ public class SystemController implements SystemControllerAPI {
     private static final Logger LOGGER = LoggerFactory.getLogger(SystemController.class);
     private static final String EXCEPTION_MESSAGE = "The draw number %s could not be fetched from the database";
 
-
-    @Autowired
     private final DrawRepository drawRepository;
 
     @Autowired
@@ -84,61 +81,6 @@ public class SystemController implements SystemControllerAPI {
         LOGGER.debug("EuroWinnersControllerImpl.getRandomWheelingSystem()");
 
         return wheelingSystemBuilder.buildRandomWheelingSystem(requestData);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Draw addDraw(JsonNode addRequest) {
-        if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug(String.format("Adding draw %s", addRequest.toString()));
-        }
-        ObjectMapper mapper = new ObjectMapper();
-        Draw draw = mapper.convertValue(addRequest, Draw.class);
-
-        return drawRepository.save(draw);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Draw getDraw(@PathVariable String drawNumber) {
-        if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug(String.format("Fetching draw %s", drawNumber));
-        }
-        Query query = new Query();
-        query.addCriteria(Criteria.where("drawNumber").is(drawNumber));
-        Draw draw = mongoTemplate.findOne(query, Draw.class);
-
-        if (null != draw) {
-            return draw;
-        } else {
-            throw new NotFoundException(String.format(EXCEPTION_MESSAGE, drawNumber));
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Page<Draw> getDraws(Pageable pageable) {
-        if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug("Fetching all draws");
-        }
-        List<Draw> draws = drawRepository.findAll();
-
-        PageRequest sortedPage = PageRequest.of(
-                pageable.isUnpaged() ? 0 : pageable.getPageNumber(),
-                pageable.isUnpaged() ? Integer.MAX_VALUE : pageable.getPageSize(),
-                Sort.by(Sort.Direction.ASC, "id"));
-
-        if (!draws.isEmpty()) {
-            return pageExtractor.extractPageFromList(draws, sortedPage);
-        } else {
-            throw new NotFoundException("No draws fetched");
-        }
     }
 
 

@@ -1,9 +1,14 @@
 package com.vld.dobitnik.cqrs;
 
 
-import org.springframework.stereotype.Component;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
-@Component
+import java.util.Optional;
+
+@Repository
 public interface DrawRepository extends MongoRepository<Draw, String> {
+    Optional<Draw> findByDrawNumber(String drawNumber);
+    Optional<Draw> findByDrawDate(String drawDate);
+
 }

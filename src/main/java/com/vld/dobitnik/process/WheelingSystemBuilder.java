@@ -5,7 +5,7 @@ import com.vld.dobitnik.exception.InvalidSchemaException;
 import com.vld.dobitnik.exception.NullParameterException;
 import com.vld.dobitnik.exception.OutOfRangeException;
 import com.vld.dobitnik.utils.CommonConstants;
-import com.vld.dobitnik.validate.RangeValidation;
+import com.vld.dobitnik.validate.CombinationValidation;
 import com.vld.dobitnik.validate.SchemaValidation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +42,7 @@ public class WheelingSystemBuilder {
     private RandomNumbersGenerator randomNumbersGenerator;
 
     @Autowired
-    private RangeValidation rangeValidation;
+    private CombinationValidation combinationValidation;
 
     @Autowired
     private SchemaValidation schemaValidation;
@@ -78,7 +78,7 @@ public class WheelingSystemBuilder {
                 ((ArrayList<Integer>) parameters.get(MAIN_NUMBERS_COMBINATION))
                         .stream().distinct().sorted().collect(Collectors.toList());
 
-        String invalidRange = rangeValidation.invalidRange(mainNumbersCombination, mainGamePool);
+        String invalidRange = combinationValidation.invalidRange(mainNumbersCombination, mainGamePool);
         if(!invalidRange.isEmpty()){
             throw new OutOfRangeException(invalidRange);
         }
@@ -90,7 +90,7 @@ public class WheelingSystemBuilder {
         bonusNumbersOpt = Optional.ofNullable((List<Integer>) parameters.get(BONUS_NUMBERS));
         if (bonusNumbersOpt.isPresent()) {
             bonusNumbers = bonusNumbersOpt.get().stream().distinct().sorted().collect(Collectors.toList());
-            invalidRange = rangeValidation.invalidRange(bonusNumbers, bonusPool);
+            invalidRange = combinationValidation.invalidRange(bonusNumbers, bonusPool);
             if(!invalidRange.isEmpty()){
                 throw new OutOfRangeException(invalidRange);
             }
